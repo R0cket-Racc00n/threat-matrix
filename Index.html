@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GCTI - Threat Score Matrix V1</title>
+
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <!-- CSS -->
+    <link rel="stylesheet" href="Styles.css">
+
+</head>
+<body>
+    <div class="Header">
+        <h3>
+            GCTI - Threat Score Matrix
+        </h3>
+    </div>
+    
+    <div class="hero">
+        <div class="threatLevel">
+            <div class="sub-header">
+                Threat Level
+            </div>
+            <div>
+                <select name="Threat" id="Threat">
+                <option value="0" selected disabled hidden>Select Threat Type</option>
+                <option value="0.25">Actor</option>
+                <option value="0.25">Malware</option>
+                <option value="0.5">Group</option>
+                </select>
+            </div>
+            <div>
+                <select name="Association" id="Association">
+                    <option value="0" selected disabled hidden>Select Association</option>
+                    <option value="0.25">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+            <div>
+                <select name="Capability" id="Capability">
+                    <option value="0" selected disabled hidden>Select Capability</option>
+                    <option value="1">Nation state</option>
+                    <option value="0.5">Cybercriminals</option>
+                    <option value="1">Hacktivists</option>
+                    <option value="1">Terrorist groups</option>
+                    <option value="0.5">Thrill seekers</option>
+                    <option value="0.5">Script kiddie</option>
+                </select>
+            </div>
+            <div>
+                <select name="ActivityLevel" id="ActivityLevel">
+                    <option value="0" selected disabled hidden>Select Activity Level</option>
+                    <option value="1">Highly Active</option>
+                    <option value="0.75">Active</option>
+                    <option value="0.5">Medium</option>
+                    <option value="0.25">Low</option>
+                </select>
+            </div>
+            <div>
+                <select name="ActiveSince" id="ActiveSince">
+                    <option value="0" selected disabled hidden>Select Activity Time Frame</option>
+                    <option value="0.25">>= 5 years</option>
+                    <option value="0.25">2-4 years</option>
+                    <option value="0.25">1 year</option>
+                </select>
+            </div>
+            <div>
+                <select name="AttackType" id="AttackType">
+                    <option value="0" selected disabled hidden>Select Attack Type</option>
+                    <option value="0.75">Ransomware attacks</option>
+                    <option value="0.5">Internet-faced device attacks</option>
+                    <option value="0.75">Lock-and-leak attacks</option>
+                    <option value="0.5">Denial of Service</option>
+                    <option value="0.75">Data Leaks</option>
+                    <option value="0.5">Cryptomining</option>
+                    <option value="0.5">Hacktivism</option>
+                </select>
+            </div>
+            <div>
+                <select name="APT" id="APT">
+                    <option value="0" selected disabled hidden>Select whether this is an APT or not</option>
+                    <option value="0.5">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+            <div>
+                <select name="ZeroDay" id="ZeroDay">
+                    <option value="0" selected disabled hidden>Select whether this threat has Zero Day Exploits</option>
+                    <option value="0.5">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>            
+            <div>
+                <select name="Intent" id="Intent">
+                    <option value="0" selected disabled hidden>Select Intent</option>
+                    <option value="0.25">Brand Damage</option>
+                    <option value="0.25">Financial Gain</option>
+                    <option value="0.1">Disruption</option>
+                    <option value="0.1">Recognition &amp; Achievement</option>
+                    <option value="0.5">Espionage</option>
+                    <option value="0.5">Political</option>
+                </select>
+            </div>
+            <div class="score">
+                Threat Score = <span id="threatScoreResult"></span>
+            </div>        
+        </div>
+
+        <div class="likeliHood">
+            <div class="sub-header">
+                Likelihood
+            </div>
+            <div>
+                <div>
+                    <select name="RecentNews" id="RecentNews">
+                        <option value="0" selected disabled hidden>Select Recent News</option>
+                        <option value="0.5">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                </div>
+                <div>
+                    <select name="NewsTimeFrame" id="NewsTimeFrame">
+                        <option value="0" selected disabled hidden>Select News Time Frame</option>
+                        <option value="1">1-2 days</option>
+                        <option value="0.75">3-7 days</option>
+                        <option value="0.25">&gt; 7 days</option>
+                    </select>
+                </div>
+                <div>
+                    <select name="TargetSector" id="TargetSector">
+                        <option value="0" selected disabled hidden>Select if Sector is Affected</option>
+                        <option value="0.5">Yes</option>
+                        <option value="0">No</option>
+                        <option value="0.25">May be</option>
+                    </select>
+                </div>
+                <div>
+                    <select name="TargetCountry" id="TargetCountry">
+                        <option value="0" selected disabled hidden>Select if Country is Affected</option>
+                        <option value="0.5">Yes</option>
+                        <option value="0">No</option>
+                        <option value="0.25">May be</option>
+                    </select>
+                </div>
+                <div>
+                    <select name="TargetGeography" id="TargetGeography">
+                        <option value="0" selected disabled hidden>Select if Geography is Affected</option>
+                        <option value="0.5">Yes</option>
+                        <option value="0">No</option>
+                        <option value="0.25">May be</option>
+                    </select>
+                </div>
+                <div>
+                    <select name="TechnologyStack" id="TechnologyStack">
+                        <option value="0" selected disabled hidden>Select if Technology Stack is Affected</option>
+                        <option value="0.5">Yes</option>
+                        <option value="0">No</option>
+                        <option value="0.25">May be</option>
+                    </select>
+                </div>                
+                <div>
+                    <select name="IntelSource" id="IntelSource">
+                        <option value="0" selected disabled hidden>Select if the Intel Source is Reliable</option>
+                        <option value="0.5">Yes</option>
+                        <option value="0">No</option>
+                        <option value="0.25">Neutral</option>
+                    </select>
+                </div>
+                <div>
+                    <select name="IntelAccuracy" id="IntelAccuracy">
+                        <option value="0" selected disabled hidden>Select the Intel Source Accuracy</option>
+                        <option value="0.5">Yes</option>
+                        <option value="0">No</option>
+                        <option value="0.25">Neutral</option>
+                    </select>
+                </div>
+                <div>
+                    <select name="MultipleIntels" id="MultipleIntels">
+                        <option value="0" selected disabled hidden>Select if there are Multiple Intels</option>
+                        <option value="0.5">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                </div> 
+            </div>
+            <div class="score">
+                Likelihood Score = <span id="likelihoodScoreResult"></span>
+            </div>
+        </div>
+
+        
+
+    </div>
+
+    <div class="button">
+        <button class=".but">Submit</button>
+    </div>
+
+    <div class="result">
+        Risk Score = <span id="resultValue"></span><span id="threatLevelvalue"></span>
+    </div>
+
+    <!-- <div class="Footer">
+        <div>Risk Score = Threat Score * Likelihood Score</div>
+        <div>Risk Score Mapping</div>
+        <ul>
+            <li>L = Low</li>
+            <li>M = Medium</li>
+            <li>H = High</li>
+            <li>C = Critical</li>
+        </ul>
+        Risk level is a calculated based on the ‘Likelihood’ of threat occurrence and probability of the ‘Impact’ that can be caused by the threat, specifically to the industry, sector, geography, and technology stack currently hosted in the client environment. It also considers multiple other factors such as capability of malware or threat actor, their victimology, motive, activity level, and historical data, this helps our research team to calculate correct RISK level of each threat and helps to prepare our clients well in advance."
+    </div> -->
+
+<script src="Script.js"></script>
+</body>
+</html>
